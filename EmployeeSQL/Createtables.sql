@@ -38,10 +38,9 @@ CREATE TABLE salaries (
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no));
 	
 --List each employees: number, last name, first name, sex, and salary
-COPY(SELECT e.emp_no, s.emp_no, e.last_name, e.first_name, e.sex, s.salary
+SELECT e.emp_no, s.emp_no, e.last_name, e.first_name, e.sex, s.salary
 from employees e
-LEFT JOIN salaries s on e.emp_no = s.emp_no) to 'Users/chilon/Documents/employeesalaries.csv'DELIMITER ',' CSV HEADER;
-
+LEFT JOIN salaries s on e.emp_no = s.emp_no;
 --list first name, last name, and hire date for employees hired in 1986
 SELECT e.emp_no, e.last_name, e.first_name, e.hire_date
 from employees e
